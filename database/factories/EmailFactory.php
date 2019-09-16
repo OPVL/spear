@@ -2,10 +2,10 @@
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 
-use App\FakeEmail;
+use App\Email;
 use Faker\Generator as Faker;
 
-$factory->define(FakeEmail::class, function (Faker $faker) {
+$factory->define(Email::class, function (Faker $faker) {
     return [
         'sender' => $faker->unique()->safeEmail,
         'subjec' => $faker->sentence(4)

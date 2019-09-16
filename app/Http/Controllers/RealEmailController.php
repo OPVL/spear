@@ -2,20 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Spear;
+use App\RealEmail;
 use Illuminate\Http\Request;
 
-class SpearController extends Controller
+class RealEmailController extends Controller
 {
-
-    public function gotcha(string $hash){
-        $spear = Spear::whereHash($hash)->get()->first();
-        $spear->success = true;
-        $spear->save();
-
-        dd($spear);
-    }
-
     /**
      * Display a listing of the resource.
      *
@@ -50,10 +41,10 @@ class SpearController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Spear  $spear
+     * @param  \App\RealEmail  $realEmail
      * @return \Illuminate\Http\Response
      */
-    public function show(Spear $spear)
+    public function show(RealEmail $realEmail)
     {
         //
     }
@@ -61,10 +52,10 @@ class SpearController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Spear  $spear
+     * @param  \App\RealEmail  $realEmail
      * @return \Illuminate\Http\Response
      */
-    public function edit(Spear $spear)
+    public function edit(RealEmail $realEmail)
     {
         //
     }
@@ -73,10 +64,10 @@ class SpearController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Spear  $spear
+     * @param  \App\RealEmail  $realEmail
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Spear $spear)
+    public function update(Request $request, RealEmail $realEmail)
     {
         //
     }
@@ -84,10 +75,10 @@ class SpearController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Spear  $spear
+     * @param  \App\RealEmail  $realEmail
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Spear $spear)
+    public function destroy(RealEmail $realEmail)
     {
         //
     }

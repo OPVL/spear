@@ -18,7 +18,10 @@ class CreateTargetsTable extends Migration
             $table->string('email', 32)->unique();
             $table->string('first_name', 16);
             $table->string('last_name', 24);
+            $table->bigInteger('target_group_id')->unsigned();
             $table->timestamps();
+
+            $table->foreign('target_group_id')->references('id')->on('target_groups')->onDelete('cascade');
         });
     }
 

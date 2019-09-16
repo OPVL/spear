@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateFakeEmailsTable extends Migration
+class CreateTargetGroupsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,9 @@ class CreateFakeEmailsTable extends Migration
      */
     public function up()
     {
-        Schema::create('fake_emails', function (Blueprint $table) {
+        Schema::create('target_groups', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('sender', 32);
-            $table->string('subject', 64);
+            $table->string('name', 60);
             $table->timestamps();
         });
     }
@@ -28,6 +27,6 @@ class CreateFakeEmailsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('fake_emails');
+        Schema::dropIfExists('target_groups');
     }
 }

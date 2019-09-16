@@ -14,3 +14,5 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('test/{hash}', 'SpearController@gotcha')->name('test.gotcha');
