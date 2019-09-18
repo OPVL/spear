@@ -1,6 +1,19 @@
 <?php
 
 return [
+    "driver" => "smtp",
+    "host" => "smtp.mailtrap.io",
+    "port" => 2525,
+    "from" => array(
+        "address" => "from@example.com",
+        "name" => "Example"
+    ),
+    "username" => "e9b3e4e9f52662",
+    "password" => "6647bfa4620a64",
+    "sendmail" => "/usr/sbin/sendmail -bs"
+  ];
+
+return [
 
     /*
     |--------------------------------------------------------------------------
@@ -56,8 +69,8 @@ return [
     */
 
     'from' => [
-        'address' => env('MAIL_FROM_ADDRESS', 'hello@example.com'),
-        'name' => env('MAIL_FROM_NAME', 'Example'),
+        'address' => env('MAIL_FROM_ADDRESS', 'quarantine@youthfed.micorosft.com'),
+        'name' => env('MAIL_FROM_NAME', 'Quarantine'),
     ],
 
     /*

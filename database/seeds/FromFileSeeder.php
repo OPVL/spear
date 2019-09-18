@@ -1,7 +1,9 @@
 <?php
 
 use App\Email;
+use App\Spear;
 use App\Target;
+use App\TargetGroup;
 use Carbon\Carbon;
 use Illuminate\Database\Seeder;
 
@@ -18,7 +20,7 @@ class FromFileSeeder extends Seeder
 
         foreach ($csv as $ind => $email) {
             if ($ind == 0)
-            continue;
+                continue;
 
             $created = new Carbon();
             // dd($created);
@@ -30,14 +32,14 @@ class FromFileSeeder extends Seeder
                 'fake' => false
             ]);
 
-                $email->save();
+            $email->save();
         }
 
         $csv = array_map('str_getcsv', file('storage/import/yeet.csv'));
 
         foreach ($csv as $ind => $email) {
             if ($ind == 0)
-            continue;
+                continue;
 
             $created = new Carbon();
             // dd($created);
@@ -49,12 +51,13 @@ class FromFileSeeder extends Seeder
                 'fake' => true
             ]);
 
-                $email->save();
+            $email->save();
         }
 
         $csv = array_map('str_getcsv', file('storage/import/targets.csv'));
         // dd($csv);
-
+        $youthfed = TargetGroup::whereName('Youthfed')->first();
+        $targets = [];
         foreach ($csv as $ind => $target) {
             if ($ind == 0)
                 continue;
@@ -63,7 +66,26 @@ class FromFileSeeder extends Seeder
                 'last_name' => $target[1],
                 'email' => $target[2],
             ]);
-            $target->save();
+            $targets[] = $target;
+        }
+
+        $youthfed->targets()->saveMany($targets);
+        $youthfed->refresh();
+        foreach ($youthfed->targets as $target) {
+            $spear = new Spear([
+                'hash' => Str::random(24)
+            ]);
+
+            $target->spears()->save($spear);
+
+                $fake = Email::fake();
+                $spear->emails()->attach(Email::randomReal($target->email));
+                // $emails[] = ;
+
+            for ($i=0; $i < rand(2,5); $i++) {
+                $spear->emails()->attach($fake[rand(0, sizeof($fake) - 1)]);
+                // $emails[] =
+            }
         }
         // dd($targets);
     }

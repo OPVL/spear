@@ -13,6 +13,8 @@ use Illuminate\Database\Eloquent\Model;
  * @property int $success
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Email[] $emails
+ * @property-read int|null $emails_count
  * @property-read \App\Target $target
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Spear newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Spear newQuery()
@@ -30,5 +32,10 @@ class Spear extends Model
     public function target()
     {
         return $this->belongsTo('App\Target');
+    }
+
+    public function emails(){
+        return $this->belongsToMany('App\Email');
+        // return $this->hasManyThrough('App\Email', 'App\EmailSpear');
     }
 }

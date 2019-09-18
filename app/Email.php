@@ -31,15 +31,25 @@ use Illuminate\Database\Eloquent\Model;
 class Email extends Model
 {
     public static function real(){
-        return self::whereFake(false);
+        return self::whereFake(false)->get();
     }
 
     public static function fake(){
-        return self::whereFake(true);
+        return self::whereFake(true)->get();
+    }
+
+    public static function randomReal(string $email){
+        $all = self::real();
+        $ret = $all[rand(0, $all->count() - 1)];
+
+        return $ret->sender != $email ? $ret : self::randomReal($email);
     }
 
     public function spears()
     {
-        return $this->belongsToMany('App\Spear', 'email_spear', 'email_id', 'spear_id');
+        // return $this->belongsToMany('App\Spear')->withPivot('email_id', 'spear_id');
+        return $this->belongsToMany('App\Spear');
+        // return $this->belongsToMany('App\Spear')->using('App\EmailSpear');
+        // return $this->belongsToMany('App\Spear', 'email_spear', 'email_id', 'spear_id');
     }
 }
