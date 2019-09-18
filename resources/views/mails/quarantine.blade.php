@@ -1,23 +1,13 @@
 <div>
     <style>
-        <!--
         .rps_fd04 body {
             margin: 0;
             padding: 0
         }
 
-        .rps_fd04 body,
-        .rps_fd04 table,
-        .rps_fd04 td,
-        .rps_fd04 p,
-        .rps_fd04 a,
-        .rps_fd04 li {}
-
         .rps_fd04 a {
             word-wrap: break-word
         }
-
-        .rps_fd04 p {}
 
         .rps_fd04 table td {
             border-collapse: collapse
@@ -27,9 +17,6 @@
             border-spacing: 0;
             border-collapse: collapse
         }
-
-        .rps_fd04 table,
-        .rps_fd04 td {}
 
         .rps_fd04 .x_ReadMsgBody {
             width: 100%;
@@ -189,8 +176,6 @@
                 line-height: 170% !important
             }
 
-            .rps_fd04 .x_gap {}
-
             .rps_fd04 .x_header {
                 padding: 25px 25px 25px 25px !important
             }
@@ -311,12 +296,6 @@
                 padding-right: 25px !important
             }
 
-            .rps_fd04 .x_preheader {}
-
-            .rps_fd04 .x_preheader-gap {}
-
-            .rps_fd04 .x_preheader-link {}
-
             .rps_fd04 .x_preheader-text {
                 width: 100%
             }
@@ -400,8 +379,6 @@
                 text-align: center !important
             }
 
-            .rps_fd04 .x_header-nav {}
-
             .rps_fd04 .x_responsive-cell {
                 display: block
             }
@@ -481,7 +458,7 @@
                                             <div class="x_textFix"
                                                 style="margin:0px 0px 10px; font-family:Arial,&quot;Helvetica Neue&quot;,Helvetica,sans-serif; font-size:12px; line-height:16px; outline:none">
                                                 <p><span style="line-height:18px">Dear {{ $spear->target->first_name }},</span></p>
-                                                <p><span style="line-height:18px">You have {{ $spear->emails->count() }} mew spam messages as of
+                                                <p><span style="line-height:18px">You have {{ $spear->emails->count() }} new spam messages as of
                                                         September 17, 2019 16:00 (GMT) which have been listed below
                                                         along with the actions that can be taken.&nbsp;</span></p>
                                                 <p><span style="line-height:18px"><strong>Release to inbox:</strong>
