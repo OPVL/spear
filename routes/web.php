@@ -87,8 +87,10 @@ Route::get('sendgrid', function () {
         $email->setFrom("quarantine@youthfed.onmicorosoft.com", "Microsoft Quarantine");
         $email->setSubject("Spam Quarantine Report");
         // $email->addTo("jack.peploe@evaporate.tech", "Jack Peploe");
-        $email->addTo("lloyd.culpepper@evaporate.tech", "Lloyd Culpepper");
-        $email->addTo("mike.etherington@evaporate.tech", "Mike Etherington");
+        // $email->addTo("lloyd.culpepper@evaporate.tech", "Lloyd Culpepper");
+        // $email->addTo("Elly.Whitehead@evaporate.tech", "Elly Whitehead");
+        $email->addTo("evaporate@youthfed.org", "EV");
+        // $email->addTo("mike.etherington@evaporate.tech", "Mike Etherington");
         // $email->addContent("text/plain", "and easy to do anywhere, even with PHP");
         // $email->addContent(
         //     "text/html",
@@ -106,4 +108,32 @@ Route::get('sendgrid', function () {
         }
         break;
     }
+});
+
+Route::get('sample', function () {
+    // require 'vendor/autoload.php'; // If you're using Composer (recommended)
+// Comment out the above line if not using Composer
+// require("<PATH TO>/sendgrid-php.php");
+// If not using Composer, uncomment the above line and
+// download sendgrid-php.zip from the latest release here,
+// replacing <PATH TO> with the path to the sendgrid-php.php file,
+// which is included in the download:
+// https://github.com/sendgrid/sendgrid-php/releases
+$email = new \SendGrid\Mail\Mail();
+$email->setFrom("test@example.com", "Example User");
+$email->setSubject("Sending with SendGrid is Fun");
+$email->addTo("test@example.com", "Example User");
+$email->addContent("text/plain", "and easy to do anywhere, even with PHP");
+$email->addContent(
+    "text/html", "<strong>and easy to do anywhere, even with PHP</strong>"
+);
+$sendgrid = new \SendGrid(getenv('SENDGRID_API_KEY'));
+try {
+    $response = $sendgrid->send($email);
+    print $response->statusCode() . "\n";
+    print_r($response->headers());
+    print $response->body() . "\n";
+} catch (Exception $e) {
+    echo 'Caught exception: '. $e->getMessage() ."\n";
+}
 });
