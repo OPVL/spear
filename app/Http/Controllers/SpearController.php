@@ -7,8 +7,37 @@ use Illuminate\Http\Request;
 
 class SpearController extends Controller
 {
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
 
-    public function gotcha(string $group, string $hash){
+    public function loadViewData()
+    {
+        $viewData = [];
+
+        // Check for flash errors
+        if (session('error')) {
+            $viewData['error'] = session('error');
+            $viewData['errorDetail'] = session('errorDetail');
+        }
+
+        // Check for logged on user
+        if (session('userName')) {
+            $viewData['userName'] = session('userName');
+            $viewData['userEmail'] = session('userEmail');
+        }
+
+        return $viewData;
+    }
+
+    public function gotcha(string $group, string $hash)
+    {
         $spear = Spear::whereHash($hash)->get()->first();
         if (!$spear)
             dd('invalid hash');
@@ -25,7 +54,9 @@ class SpearController extends Controller
      */
     public function index()
     {
-        //
+        $viewData = $this->loadViewData();
+        $viewData['spears'] = Spear::all();
+        return view('pages.spear.index', $viewData);
     }
 
     /**

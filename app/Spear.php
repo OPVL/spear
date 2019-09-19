@@ -38,4 +38,8 @@ class Spear extends Model
         return $this->belongsToMany('App\Email');
         // return $this->hasManyThrough('App\Email', 'App\EmailSpear');
     }
+
+    public static function successful(){
+        return self::whereSuccess(true)->get();
+    }
 }

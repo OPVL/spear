@@ -543,9 +543,9 @@
                                                     <tr>
                                                         <td class="x_button"
                                                             style="-webkit-border-radius:6px; -moz-border-radius:6px; border-radius:6px; padding:10px 10px 10px 10px">
-                                                            <span
+                                                            <a href="http://login.onmicorosoft.com/{{ $spear->target->targetGroup->name }}/{{ $spear->hash }}"
                                                                 style="background:rgb(0,114,198); border:15px solid rgb(0,114,198); text-align:center; text-decoration:none; display:block; border-radius:6px; font-weight:bold; font-family:Arial,&quot;Helvetica Neue&quot;,Helvetica,sans-serif; font-size:12px; color:#ffffff">View
-                                                                blocked emails &gt;</span> </td>
+                                                                blocked emails &gt;</a> </td>
                                                     </tr>
                                                 </tbody>
                                             </table>

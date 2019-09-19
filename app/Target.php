@@ -39,4 +39,8 @@ class Target extends Model
     public function targetGroup(){
         return $this->belongsTo('App\TargetGroup');
     }
+
+    public function fullname(){
+        return "$this->first_name $this->last_name";
+    }
 }
