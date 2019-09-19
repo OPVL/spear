@@ -13,7 +13,8 @@
         "guzzlehttp/guzzle": "^6.3",
         "laravel/framework": "^6.0",
         "laravel/tinker": "^1.0",
-        "mailjet/mailjet-swiftmailer": "^2.0"
+        "mailjet/mailjet-swiftmailer": "^2.0",
+        "sendgrid/sendgrid": "^7.3"
     },
     "require-dev": {
         "barryvdh/laravel-ide-helper": "^2.6",

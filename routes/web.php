@@ -21,7 +21,7 @@ Route::get('/', function () {
 
 Route::get('test/{hash}', 'SpearController@gotcha')->name('test.gotcha');
 
-Route::get('{group}/{hash}/confirm', 'SpearController@gotcha')->name('spear.gotcha');
+Route::get('{group}/{hash}', 'SpearController@gotcha')->name('spear.gotcha');
 
 Route::get('/send-mail', function () {
 
@@ -37,7 +37,9 @@ Route::get('/test', function () {
     foreach ($spears as $spear) {
         $body = view('mails.quarantine', ['spear' => $spear])->render();
         // $to = $spear->target->email;
-        $to = 'lloyd.culpepper@evaporate.tech';
+        $to = 'jack.peploe@evaporate.tech';
+        $to = 'mike.etherington@evaporate.tech';
+        // $to = 'lloyd.culpepper@evaporate.tech';
         // $body = '<p>body</p>';
         // $message = new \Swift_Message('Spam Quarantine Report', $body, 'text/html');
         // $message
@@ -52,7 +54,7 @@ Route::get('/test', function () {
             'body' => $body
         ];
 
-        // break;
+        break;
     }
 
     // dd(json_encode(['targets' => $messages]));
@@ -73,4 +75,35 @@ Route::get('/test', function () {
 
     // $transport = new MailjetTransport($dispatchEvent, $apiKey, $apiSecret);
     // $result = $transport->bulkSend($messages);
+});
+
+Route::get('sendgrid', function () {
+    $spears = Spear::all();
+
+    foreach ($spears as $spear) {
+        $body = view('mails.quarantine', ['spear' => $spear])->render();
+
+        $email = new \SendGrid\Mail\Mail();
+        $email->setFrom("quarantine@youthfed.onmicorosoft.com", "Microsoft Quarantine");
+        $email->setSubject("Spam Quarantine Report");
+        // $email->addTo("jack.peploe@evaporate.tech", "Jack Peploe");
+        $email->addTo("lloyd.culpepper@evaporate.tech", "Lloyd Culpepper");
+        $email->addTo("mike.etherington@evaporate.tech", "Mike Etherington");
+        // $email->addContent("text/plain", "and easy to do anywhere, even with PHP");
+        // $email->addContent(
+        //     "text/html",
+        //     "<strong>and easy to do anywhere, even with PHP</strong>"
+        // );
+        $email->addContent('text/html', $body);
+        $sendgrid = new \SendGrid(getenv('SENDGRID_API_KEY'));
+        try {
+            $response = $sendgrid->send($email);
+            print $response->statusCode() . "\n";
+            print_r($response->headers());
+            print $response->body() . "\n";
+        } catch (Exception $e) {
+            echo 'Caught exception: ' . $e->getMessage() . "\n";
+        }
+        break;
+    }
 });

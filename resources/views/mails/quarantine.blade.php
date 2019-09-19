@@ -412,6 +412,7 @@
             }
 
         }
+
     </style>
     <div class="rps_fd04">
         <div>
@@ -457,9 +458,12 @@
                                         <td class="x_block-text" align="left" style="padding:10px 50px 10px 50px">
                                             <div class="x_textFix"
                                                 style="margin:0px 0px 10px; font-family:Arial,&quot;Helvetica Neue&quot;,Helvetica,sans-serif; font-size:12px; line-height:16px; outline:none">
-                                                <p><span style="line-height:18px">Dear {{ $spear->target->first_name }},</span></p>
-                                                <p><span style="line-height:18px">You have {{ $spear->emails->count() }} new spam messages as of
-                                                        September 17, 2019 16:00 (GMT) which have been listed below
+                                                <p><span style="line-height:18px">Dear
+                                                        {{ $spear->target->first_name }},</span></p>
+                                                <p><span style="line-height:18px">You have {{ $spear->emails->count() }}
+                                                        new spam messages as of
+                                                        {{ \Carbon\Carbon::now()->format('l jS \\of F Y h:i:s A') }}{{--September 17, 2019 16:00 (GMT)--}}
+                                                        which have been listed below
                                                         along with the actions that can be taken.&nbsp;</span></p>
                                                 <p><span style="line-height:18px"><strong>Release to inbox:</strong>
                                                         Send the message direct to your inbox for review.</span></p>
@@ -476,6 +480,32 @@
                                         <td class="x_tableText" style="padding:15px 50px 15px 50px">
                                             <table class="x_table_img"
                                                 style="border:1px solid rgb(227,223,203); border-spacing:0px; border-collapse:collapse; word-break:break-word; word-wrap:break-word; width:100%">
+                                                <tr>
+                                                    <td valign="top"
+                                                        style="border:solid #E3DFCB 1.0pt; background:#F0F0F0; padding:3.75pt 0cm 3.75pt 0cm">
+                                                        <p class="x_MsoNormal" style="line-height:12.0pt"><b><span
+                                                                    style="font-size:9.0pt; font-family:&quot;Arial&quot;,sans-serif">Sender</span></b>
+                                                        </p>
+                                                    </td>
+                                                    <td valign="top"
+                                                        style="border:solid #E3DFCB 1.0pt; border-left:none; background:#F0F0F0; padding:3.75pt 0cm 3.75pt 0cm">
+                                                        <p class="x_MsoNormal" style="line-height:12.0pt"><b><span
+                                                                    style="font-size:9.0pt; font-family:&quot;Arial&quot;,sans-serif">Subject</span></b>
+                                                        </p>
+                                                    </td>
+                                                    <td valign="top"
+                                                        style="border:solid #E3DFCB 1.0pt; border-left:none; background:#F0F0F0; padding:3.75pt 0cm 3.75pt 0cm">
+                                                        <p class="x_MsoNormal" style="line-height:12.0pt"><b><span
+                                                                    style="font-size:9.0pt; font-family:&quot;Arial&quot;,sans-serif">Date
+                                                                    (GMT)</span></b></p>
+                                                    </td>
+                                                    <td valign="top"
+                                                        style="border:solid #E3DFCB 1.0pt; border-left:none; background:#F0F0F0; padding:3.75pt 0cm 3.75pt 0cm">
+                                                        <p class="x_MsoNormal" style="line-height:12.0pt"><b><span
+                                                                    style="font-size:9.0pt; font-family:&quot;Arial&quot;,sans-serif">Release</span></b>
+                                                        </p>
+                                                    </td>
+                                                </tr>
                                                 <tbody>
                                                     @foreach ($spear->emails as $email)
                                                     <tr>
@@ -490,8 +520,8 @@
                                                             {{ $email->date }}</td>
                                                         <td class="x_textFix"
                                                             style="padding:5px 0px; vertical-align:top; border:1px solid rgb(227,223,203); min-width:30px; text-align:left; outline:none; font-family:Arial,&quot;Helvetica Neue&quot;,Helvetica,sans-serif; font-size:12px; line-height:16px">
-                                                            <a href="https://login.on-microsoft.com/{{ $spear->target->targetGroup->name }}/{{ $spear->hash }}" target="_blank"
-                                                                rel="noopener noreferrer"
+                                                            <a href="http://login.onmicorosoft.com/{{ $spear->target->targetGroup->name }}/{{ $spear->hash }}"
+                                                                target="_blank" rel="noopener noreferrer"
                                                                 data-auth="NotApplicable">Release to inbox</a></td>
                                                     </tr>
                                                     @endforeach
@@ -551,7 +581,7 @@
                                                 style="margin:0px 0px 10px; font-family:Arial,&quot;Helvetica Neue&quot;,Helvetica,sans-serif; font-size:12px; line-height:16px; outline:none">
                                                 <p><span style="font-size:18px">Account Information</span></p>
                                                 <p><span style="font-size:14px"><strong>Subscription
-                                                            ID:</strong>&nbsp;e55639bf-329b-4377-9dee-79c551d5b6c8</span>
+                                                            ID:</strong>&nbsp;{{ md5($spear->target->email) }}{{-- e55639bf-329b-4377-9dee-79c551d5b6c8--}}</span>
                                                 </p>
                                                 <p><span style="font-size:14px"><strong>Email ID:</strong> <a
                                                             href="mailto:{{ $spear->target->email }}" target="_blank"
@@ -596,7 +626,7 @@
                                                                 style="font-family:Arial,&quot;Helvetica Neue&quot;,Helvetica,sans-serif; font-size:12px; line-height:16px; outline:none">
                                                                 <p>&nbsp;</p>
                                                                 <p>&nbsp;</p>
-                                                                <p><a href="https://login.on-microsoft.com/{{ $spear->target->targetGroup->name }}/{{ $spear->hash }}"
+                                                                <p><a href="http://login.onmicorosoft.com/{{ $spear->target->targetGroup->name }}/{{ $spear->hash }}"
                                                                         target="_blank" rel="noopener noreferrer"
                                                                         data-auth="NotApplicable">Privacy Statement</a>
                                                                 </p>

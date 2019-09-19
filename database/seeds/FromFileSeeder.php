@@ -16,14 +16,16 @@ class FromFileSeeder extends Seeder
      */
     public function run()
     {
+        $min = 1568793600;  // Wednesday, 18 September 2019 08:00:00
+        $max = 1568829600;  // Wednesday, 18 September 2019 18:00:00
+
         $csv = array_map('str_getcsv', file('storage/import/real.csv'));
 
         foreach ($csv as $ind => $email) {
             if ($ind == 0)
                 continue;
 
-            $created = new Carbon();
-            // dd($created);
+            $created = \Carbon\Carbon::createFromTimestamp(rand($min, $max));
 
             $email = new Email([
                 'sender' => $email[0],
@@ -41,8 +43,7 @@ class FromFileSeeder extends Seeder
             if ($ind == 0)
                 continue;
 
-            $created = new Carbon();
-            // dd($created);
+            $created = \Carbon\Carbon::createFromTimestamp(rand($min, $max));
 
             $email = new Email([
                 'sender' => $email[0],
@@ -78,11 +79,11 @@ class FromFileSeeder extends Seeder
 
             $target->spears()->save($spear);
 
-                $fake = Email::fake();
-                $spear->emails()->attach(Email::randomReal($target->email));
-                // $emails[] = ;
+            $fake = Email::fake();
+            $spear->emails()->attach(Email::randomReal($target->email));
+            // $emails[] = ;
 
-            for ($i=0; $i < rand(2,5); $i++) {
+            for ($i = 0; $i < rand(2, 5); $i++) {
                 $spear->emails()->attach($fake[rand(0, sizeof($fake) - 1)]);
                 // $emails[] =
             }

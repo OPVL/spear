@@ -8,12 +8,14 @@ use Illuminate\Http\Request;
 class SpearController extends Controller
 {
 
-    public function gotcha(string $hash){
+    public function gotcha(string $group, string $hash){
         $spear = Spear::whereHash($hash)->get()->first();
+        if (!$spear)
+            dd('invalid hash');
         $spear->success = true;
         $spear->save();
 
-        dd($spear);
+        return redirect('https://login.microsoft.com');
     }
 
     /**
