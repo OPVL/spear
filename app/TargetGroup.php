@@ -28,4 +28,8 @@ class TargetGroup extends Model
     {
         return $this->hasMany('App\Target');
     }
+
+    public function spears(){
+        return $this->hasManyThrough('App\Spear', 'App\Target');
+    }
 }

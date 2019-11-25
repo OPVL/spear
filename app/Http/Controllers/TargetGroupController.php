@@ -5,81 +5,12 @@ namespace App\Http\Controllers;
 use App\TargetGroup;
 use Illuminate\Http\Request;
 
-class TargetGroupController extends Controller
+class TargetGroupController extends BaseController
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
+    public function show(TargetGroup $group){
+        $viewdata = $this->loadViewData();
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\TargetGroup  $targetGroup
-     * @return \Illuminate\Http\Response
-     */
-    public function show(TargetGroup $targetGroup)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\TargetGroup  $targetGroup
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(TargetGroup $targetGroup)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\TargetGroup  $targetGroup
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, TargetGroup $targetGroup)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\TargetGroup  $targetGroup
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(TargetGroup $targetGroup)
-    {
-        //
+        $viewdata['spears'] = $group->spears()->where('success', true)->get();
+        return view('pages.spear.index', $viewdata);
     }
 }

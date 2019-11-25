@@ -15,7 +15,7 @@ class CreateTargetsTable extends Migration
     {
         Schema::create('targets', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('email', 32)->unique();
+            $table->string('email', 64)->unique();
             $table->string('first_name', 16);
             $table->string('last_name', 24);
             $table->bigInteger('target_group_id')->unsigned();

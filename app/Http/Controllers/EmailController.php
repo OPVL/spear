@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Email;
 use Illuminate\Http\Request;
 
-class EmailController extends Controller
+class EmailController extends BaseController
 {
     /**
      * Display a listing of the resource.

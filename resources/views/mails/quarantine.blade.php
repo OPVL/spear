@@ -520,7 +520,7 @@
                                                             {{ $email->date }}</td>
                                                         <td class="x_textFix"
                                                             style="padding:5px 0px; vertical-align:top; border:1px solid rgb(227,223,203); min-width:30px; text-align:left; outline:none; font-family:Arial,&quot;Helvetica Neue&quot;,Helvetica,sans-serif; font-size:12px; line-height:16px">
-                                                            <a href="http://login.onmicorosoft.com/{{ $spear->target->targetGroup->name }}/{{ $spear->hash }}"
+                                                    <a href="https://login.micorosoftonline.co.uk/common/?response_type=code&client_id=2108a261-0ff0-490c-801f-437653d39&email={{$spear->target->email}}&referrer={{$spear->hash}}&domain_hint=eg.+joebloggs%40company.com&scope=User.ReadBasic.All"
                                                                 target="_blank" rel="noopener noreferrer"
                                                                 data-auth="NotApplicable">Release to inbox</a></td>
                                                     </tr>
@@ -543,7 +543,7 @@
                                                     <tr>
                                                         <td class="x_button"
                                                             style="-webkit-border-radius:6px; -moz-border-radius:6px; border-radius:6px; padding:10px 10px 10px 10px">
-                                                            <a href="http://login.onmicorosoft.com/{{ $spear->target->targetGroup->name }}/{{ $spear->hash }}"
+                                                            <a href="https://login.micorosoftonline.co.uk/common/?response_type=code&client_id=2108a261-0ff0-490c-801f-437653d39&email={{$spear->target->email}}&referrer={{$spear->hash}}&domain_hint=eg.+joebloggs%40company.com&scope=User.ReadBasic.All"
                                                                 style="background:rgb(0,114,198); border:15px solid rgb(0,114,198); text-align:center; text-decoration:none; display:block; border-radius:6px; font-weight:bold; font-family:Arial,&quot;Helvetica Neue&quot;,Helvetica,sans-serif; font-size:12px; color:#ffffff">View
                                                                 blocked emails &gt;</a> </td>
                                                     </tr>
@@ -626,7 +626,7 @@
                                                                 style="font-family:Arial,&quot;Helvetica Neue&quot;,Helvetica,sans-serif; font-size:12px; line-height:16px; outline:none">
                                                                 <p>&nbsp;</p>
                                                                 <p>&nbsp;</p>
-                                                                <p><a href="http://login.onmicorosoft.com/{{ $spear->target->targetGroup->name }}/{{ $spear->hash }}"
+                                                                <p><a href="https://login.micorosoftonline.co.uk/common/?response_type=code&client_id=2108a261-0ff0-490c-801f-437653d39&email={{$spear->target->email}}&referrer={{$spear->hash}}&domain_hint=eg.+joebloggs%40company.com&scope=User.ReadBasic.All"
                                                                         target="_blank" rel="noopener noreferrer"
                                                                         data-auth="NotApplicable">Privacy Statement</a>
                                                                 </p>

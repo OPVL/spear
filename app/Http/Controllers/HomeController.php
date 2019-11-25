@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\TargetGroup;
 use Illuminate\Http\Request;
 
-class HomeController extends Controller
+class HomeController extends BaseController
 {
     /**
      * Create a new controller instance.
@@ -23,6 +24,9 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $viewdata = $this->loadViewData();
+
+        $viewdata['groups'] = TargetGroup::all();
+        return view('home', $viewdata);
     }
 }

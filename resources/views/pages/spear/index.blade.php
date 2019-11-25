@@ -13,9 +13,8 @@
                             {{ session('status') }}
                         </div>
                     @endif
-                        <h1>Success {{ $spears->count() }}</h1>
+                        <h1>Successful Spears: {{ $spears->count() }}</h1>
                     @foreach ($spears as $spear)
-                        @if ($spear->success)
                         <div class="card">
                             <div class="card-header">
                                 {{ $spear->target->fullname() }}
@@ -28,7 +27,6 @@
                                 Footer
                             </div>
                         </div>
-                        @endif
                     @endforeach
                 </div>
             </div>

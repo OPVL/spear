@@ -16,10 +16,9 @@ class FromFileSeeder extends Seeder
      */
     public function run()
     {
-        $min = 1568793600;  // Wednesday, 18 September 2019 08:00:00
-        $max = 1568829600;  // Wednesday, 18 September 2019 18:00:00
-
-        $csv = array_map('str_getcsv', file('storage/import/real.csv'));
+        $min = 1574064000;  // Monday, 18 November 2019 08:00:00
+        $max = 1574157600;  // Tuesday, 19 November 2019 10:00:00
+        $csv = array_map('str_getcsv', file('storage/import/glee_real.csv'));
 
         foreach ($csv as $ind => $email) {
             if ($ind == 0)
@@ -37,7 +36,7 @@ class FromFileSeeder extends Seeder
             $email->save();
         }
 
-        $csv = array_map('str_getcsv', file('storage/import/yeet.csv'));
+        $csv = array_map('str_getcsv', file('storage/import/glee_fake.csv'));
 
         foreach ($csv as $ind => $email) {
             if ($ind == 0)
@@ -55,9 +54,9 @@ class FromFileSeeder extends Seeder
             $email->save();
         }
 
-        $csv = array_map('str_getcsv', file('storage/import/targets.csv'));
+        $csv = array_map('str_getcsv', file('storage/import/glee_targets.csv'));
         // dd($csv);
-        $youthfed = TargetGroup::whereName('Youthfed')->first();
+        $youthfed = TargetGroup::whereName('Gleeson Recruitment Ltd')->first();
         $targets = [];
         foreach ($csv as $ind => $target) {
             if ($ind == 0)

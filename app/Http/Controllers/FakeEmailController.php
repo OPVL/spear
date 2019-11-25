@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\FakeEmail;
 use Illuminate\Http\Request;
 
-class FakeEmailController extends Controller
+class FakeEmailController extends BaseController
 {
     /**
      * Display a listing of the resource.

@@ -15,7 +15,7 @@ class CreateEmailsTable extends Migration
     {
         Schema::create('emails', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('sender', 32);
+            $table->string('sender', 64);
             $table->string('subject', 128);
             $table->dateTime('date');
             $table->boolean('fake')->default(true);

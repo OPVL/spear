@@ -47,9 +47,6 @@ class Email extends Model
 
     public function spears()
     {
-        // return $this->belongsToMany('App\Spear')->withPivot('email_id', 'spear_id');
         return $this->belongsToMany('App\Spear');
-        // return $this->belongsToMany('App\Spear')->using('App\EmailSpear');
-        // return $this->belongsToMany('App\Spear', 'email_spear', 'email_id', 'spear_id');
     }
 }
